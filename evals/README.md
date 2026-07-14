@@ -62,16 +62,16 @@ Did neutral voice reset correctly? yes / no / not tested
 
 ## Decision after five sessions
 
-Review patterns rather than isolated events. Package a Codex skill only if the
-protocol consistently improves completion or orientation beyond simply asking the
-AI to be concise.
+Review patterns rather than isolated events. Advance toward public release only if
+the packaged skill consistently improves completion or orientation beyond simply
+asking the AI to be concise.
 
 ## Evaluation privacy
 
 Keep raw transcripts, participant details, private project ideas, local paths,
 timestamps, provider identifiers, and unredacted usage exports out of the public
-repository. Store private notes under `.dogfood-private/` or in `*.local.md` files,
-which Git ignores.
+repository. Store them in a separate private research workspace, not merely in a
+folder inside this public worktree.
 
 Commit only synthetic fixtures or aggregated findings that cannot be traced to an
 individual or confidential project. Review staged changes and commit metadata for

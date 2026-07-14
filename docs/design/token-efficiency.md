@@ -1,7 +1,7 @@
 # Token-efficiency design
 
 The canonical alpha constraints are
-[`plugins/parsnip/skills/parsnip/references/token-efficiency.md`](plugins/parsnip/skills/parsnip/references/token-efficiency.md).
+[`plugins/parsnip/skills/parsnip/references/token-efficiency.md`](../../plugins/parsnip/skills/parsnip/references/token-efficiency.md).
 This document retains the broader product and measurement design.
 
 ## Requirement

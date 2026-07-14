@@ -12,29 +12,37 @@ The core rule is simple:
 > choose when to reveal more.
 
 Parsnip is designed for different reading speeds, attention constraints, working
-memory limits, and the very human temptation to move faster than understanding. It
-may begin as a Codex skill, a prompt protocol, or a small standalone tool. The
-first goal is to validate the interaction before choosing the container.
+memory limits, and the very human temptation to move faster than understanding.
+The current alpha is distributed as an explicit-only Codex skill inside a
+skills-only plugin.
 
 ## Start here
 
-- [PLAN.md](PLAN.md) explains the product idea and staged roadmap.
-- [NOW.md](NOW.md) contains only the current decision and next action.
-- [PROTOCOL.md](PROTOCOL.md) contains the copy-paste v0.1 prompt.
 - [`plugins/parsnip/skills/parsnip/SKILL.md`](plugins/parsnip/skills/parsnip/SKILL.md)
   is the canonical explicit-only alpha skill inside the distributable plugin.
 - [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) exposes
   the plugin through a repo-local Codex marketplace.
-- [CALIBRATION.md](CALIBRATION.md) defines non-blocking onboarding and optional
-  calibration.
-- [DOGFOOD.md](DOGFOOD.md) contains the five-session acceptance test.
-- [TOKEN_EFFICIENCY.md](TOKEN_EFFICIENCY.md) defines the usage budget and bounded
-  semantic-prefetch experiment.
+- [`docs/design/calibration.md`](docs/design/calibration.md) explains non-blocking
+  onboarding and optional calibration.
+- [`docs/design/token-efficiency.md`](docs/design/token-efficiency.md) defines the
+  usage budget and bounded semantic-prefetch experiment.
+- [`evals/README.md`](evals/README.md) contains the sanitized acceptance criteria
+  and evaluation template.
+
+## Repository boundary
+
+- `plugins/parsnip/` is the installable artifact and canonical runtime source.
+- `docs/` contains stable public rationale that helps contributors understand the
+  behavior without being loaded during ordinary skill use.
+- `evals/` contains reproducible synthetic criteria and templates, never raw human
+  sessions.
+- Operational planning, prompt history, private ideas, transcripts, and raw usage
+  measurements live outside this public repository.
 
 ## Current status
 
 **Plugin-alpha stage:** the explicit-only skill is packaged as a skills-only Codex
 plugin. The repo-local `.agents/skills/parsnip` path is a development symlink to
 the packaged source, so local dogfood and distribution exercise the same files.
-Continue dogfood, package-install, and usage validation before public release or
-implicit use.
+Continue fresh-task dogfood and usage validation before public release or implicit
+use.

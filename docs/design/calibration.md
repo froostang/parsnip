@@ -1,7 +1,7 @@
 # Parsnip onboarding and calibration
 
 The canonical alpha calibration is
-[`plugins/parsnip/skills/parsnip/references/calibration.md`](plugins/parsnip/skills/parsnip/references/calibration.md).
+[`plugins/parsnip/skills/parsnip/references/calibration.md`](../../plugins/parsnip/skills/parsnip/references/calibration.md).
 This document retains the product-design rationale and interface ideas.
 
 Calibration is optional. It must never delay the user's first useful answer unless
