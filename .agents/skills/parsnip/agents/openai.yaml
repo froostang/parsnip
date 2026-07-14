@@ -1,0 +1,7 @@
+interface:
+  display_name: "Parsnip"
+  short_description: "Human-paced, progressively disclosed AI output"
+  default_prompt: "Use $parsnip to help me work through this idea at a pace I can comfortably process."
+
+policy:
+  allow_implicit_invocation: false
