@@ -1,5 +1,7 @@
 # Parsnip
 
+<img src="assets/parsnip-logo.png" alt="A smiling parsnip divided into small, digestible snips" width="180">
+
 **Parseable snips for human-paced AI.**
 
 Parsnip is an attention-aware pacing layer for AI output. It helps a person turn a
