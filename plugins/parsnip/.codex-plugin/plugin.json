@@ -1,0 +1,25 @@
+{
+  "name": "parsnip",
+  "version": "0.1.0",
+  "description": "Human-paced, progressively disclosed AI output.",
+  "author": {
+    "name": "Parsnip contributors"
+  },
+  "homepage": "https://github.com/froostang/parsnip",
+  "repository": "https://github.com/froostang/parsnip",
+  "keywords": ["accessibility", "attention", "progressive-disclosure", "productivity"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Parsnip",
+    "shortDescription": "Human-paced, progressively disclosed AI output",
+    "longDescription": "Turn large ideas and tasks into parseable snips while preserving orientation, safety, and user control.",
+    "developerName": "Parsnip contributors",
+    "category": "Productivity",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": [
+      "Use Parsnip to help me work through this idea.",
+      "Use Parsnip to explain this without overwhelming me.",
+      "Use Parsnip to turn this project into small next steps."
+    ]
+  }
+}

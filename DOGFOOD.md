@@ -1,7 +1,7 @@
 # Parsnip v0.1 dogfood
 
-Use this sheet for five evaluation conversations before deciding whether to package
-a skill.
+Use this sheet for five evaluation conversations before deciding whether the
+packaged skill is ready for public release.
 
 ## Acceptance checks
 

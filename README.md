@@ -21,8 +21,10 @@ first goal is to validate the interaction before choosing the container.
 - [PLAN.md](PLAN.md) explains the product idea and staged roadmap.
 - [NOW.md](NOW.md) contains only the current decision and next action.
 - [PROTOCOL.md](PROTOCOL.md) contains the copy-paste v0.1 prompt.
-- [`.agents/skills/parsnip/SKILL.md`](.agents/skills/parsnip/SKILL.md) is the
-  canonical explicit-only alpha skill.
+- [`plugins/parsnip/skills/parsnip/SKILL.md`](plugins/parsnip/skills/parsnip/SKILL.md)
+  is the canonical explicit-only alpha skill inside the distributable plugin.
+- [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) exposes
+  the plugin through a repo-local Codex marketplace.
 - [CALIBRATION.md](CALIBRATION.md) defines non-blocking onboarding and optional
   calibration.
 - [DOGFOOD.md](DOGFOOD.md) contains the five-session acceptance test.
@@ -31,5 +33,8 @@ first goal is to validate the interaction before choosing the container.
 
 ## Current status
 
-**Alpha-skill stage:** the explicit-only repo-local skill is structurally valid;
-continue dogfood and usage validation before personal installation or implicit use.
+**Plugin-alpha stage:** the explicit-only skill is packaged as a skills-only Codex
+plugin. The repo-local `.agents/skills/parsnip` path is a development symlink to
+the packaged source, so local dogfood and distribution exercise the same files.
+Continue dogfood, package-install, and usage validation before public release or
+implicit use.

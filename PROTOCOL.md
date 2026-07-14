@@ -1,14 +1,13 @@
 # Parsnip conversation protocol v0.1
 
-**Status:** pre-skill dogfood snapshot
+**Status:** portable prompt history
 
 The canonical alpha behavior now lives in
-[`.agents/skills/parsnip/SKILL.md`](.agents/skills/parsnip/SKILL.md). Keep this file
-as the portable prompt history; do not update it as a second runtime source of
-truth.
+[`plugins/parsnip/skills/parsnip/SKILL.md`](plugins/parsnip/skills/parsnip/SKILL.md).
+Keep this file as the portable prompt history; do not update it as a second runtime
+source of truth.
 
-This is the portable prompt for testing Parsnip before packaging it as a skill or
-building an interface.
+This is the portable prompt for testing Parsnip outside the packaged Codex skill.
 
 ## Copy-paste prompt
 

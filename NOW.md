@@ -2,7 +2,7 @@
 
 ## Current focus
 
-Validate the explicit-only repo-local Parsnip alpha across full conversations, not
+Validate the explicit-only packaged Parsnip alpha across full conversations, not
 only first responses.
 
 ## Decisions in force
@@ -24,6 +24,6 @@ only first responses.
 
 ## One next action
 
-Complete one end-to-end debugging or learning exchange with the alpha skill and
-record whether the density felt **too little**, **right**, or **too much** in
-[DOGFOOD.md](DOGFOOD.md).
+Install the repo marketplace locally, open a fresh task, complete one end-to-end
+debugging or learning exchange with the packaged skill, and record whether the
+density felt **too little**, **right**, or **too much** in [DOGFOOD.md](DOGFOOD.md).

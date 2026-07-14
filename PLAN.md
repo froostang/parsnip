@@ -332,10 +332,14 @@ Keep this ordered. Work on only the first uncompleted item.
 - [x] Draft Parsnip conversation protocol v0.1.
 - [x] Dogfood protocol v0.1 in this project conversation.
 - [x] Define a tiny session note for “too much / right / too little.”
-- [x] Decide that evidence supports an explicit-only repo-local alpha, but not
-  implicit activation or distribution.
+- [x] Decide that evidence supports an explicit-only alpha, but not implicit
+  activation or public release.
 - [x] Scaffold and structurally validate an explicit-only repo-local alpha skill.
 - [x] Forward-test first responses for debugging, learning, and technical decisions.
+- [x] Package the alpha as a skills-only Codex plugin with one canonical skill
+  source and a repo marketplace entry.
+- [ ] Install the packaged plugin from the repo marketplace and verify it in a
+  fresh task.
 - [ ] Measure each dogfood session against a concise one-shot token baseline.
 - [ ] Run five varied evaluation conversations.
 - [ ] Review the transcripts for overload and completion patterns.
