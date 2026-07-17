@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "parsnip-buffer": {
+      "command": "/bin/sh",
+      "args": ["./mcp/launch.sh"],
+      "cwd": "."
+    }
+  }
+}

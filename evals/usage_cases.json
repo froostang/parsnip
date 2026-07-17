@@ -1,0 +1,92 @@
+[
+  {
+    "id": "debugging-future-timestamp",
+    "category": "debugging",
+    "rubric": [
+      "Identify that subtracting a future timestamp produces a negative duration that passes the upper-bound check.",
+      "Reject timestamps later than now.",
+      "Preserve the inclusive five-minute freshness boundary.",
+      "Provide a usable Go patch.",
+      "Verify future, exactly-now, exactly-five-minute, and stale cases and name the full test command."
+    ],
+    "baseline_prompt": "Controlled synthetic evaluation. Do not use tools or read repository files. Give one concise complete answer. A Go service uses `const freshnessWindow = 5 * time.Minute` and `func isFresh(lastSeen, now time.Time) bool { return now.Sub(lastSeen) <= freshnessWindow }`. A future `lastSeen` is incorrectly accepted. Diagnose the cause, provide a safe patch that preserves the inclusive five-minute boundary, give boundary tests for future, exactly now, exactly five minutes old, and older than five minutes, and name the full test command.",
+    "parsnip_prompt": "Read and use the linked Parsnip skill for this controlled synthetic evaluation. Do not use other tools or read other repository files. Start at Level 1 and progressively help me reach this complete outcome: A Go service uses `const freshnessWindow = 5 * time.Minute` and `func isFresh(lastSeen, now time.Time) bool { return now.Sub(lastSeen) <= freshnessWindow }`. A future `lastSeen` is incorrectly accepted. Diagnose the cause, provide a safe patch that preserves the inclusive five-minute boundary, give boundary tests for future, exactly now, exactly five minutes old, and older than five minutes, and name the full test command.",
+    "controls": [
+      "next",
+      "next"
+    ]
+  },
+  {
+    "id": "planning-repair-cafe",
+    "category": "planning",
+    "rubric": [
+      "Define a bounded six-week pilot scope and non-goals.",
+      "Assign owners while respecting three volunteers and twelve combined hours per week.",
+      "Keep spending at or below six hundred dollars.",
+      "Address liability proof and a safety plan due ten business days before the event.",
+      "Provide milestones, safety controls, demand contingencies, and explicit go/no-go gates.",
+      "Define success as at least twenty-five attendees, fifteen attempts, eight completed repairs, and zero safety incidents.",
+      "Give one immediate finishable action with owner and done condition."
+    ],
+    "baseline_prompt": "Controlled synthetic evaluation. Do not use tools or read repository files. Give one concise complete plan for a six-week neighborhood Repair Cafe pilot at a public library. Constraints: three volunteers, twelve combined volunteer-hours per week, six hundred dollars total, proof of liability coverage and a safety plan due ten business days before the event, and one qualified volunteer must exclusively handle mains-powered devices. Success requires at least twenty-five attendees, fifteen repair attempts, eight completed repairs, and zero safety incidents. Include scope and non-goals, owners, milestones, budget, safety controls, demand contingencies, go/no-go gates, and one immediate finishable action with a done condition.",
+    "parsnip_prompt": "Read and use the linked Parsnip skill for this controlled synthetic evaluation. Do not use other tools or read other repository files. Start at Level 1 and progressively build a complete six-week neighborhood Repair Cafe pilot plan for a public library. Constraints: three volunteers, twelve combined volunteer-hours per week, six hundred dollars total, proof of liability coverage and a safety plan due ten business days before the event, and one qualified volunteer must exclusively handle mains-powered devices. Success requires at least twenty-five attendees, fifteen repair attempts, eight completed repairs, and zero safety incidents. The completed outcome needs scope and non-goals, owners, milestones, budget, safety controls, demand contingencies, go/no-go gates, and one immediate finishable action with a done condition.",
+    "controls": [
+      "next",
+      "go deeper"
+    ]
+  },
+  {
+    "id": "learning-bloom-filter",
+    "category": "learning",
+    "rubric": [
+      "Explain insertion and lookup from first principles.",
+      "Include a concrete bit-array example.",
+      "Explain why false positives occur.",
+      "Explain the no-false-negative guarantee and its assumptions.",
+      "Cover memory, item-count, and hash-count tradeoffs.",
+      "Explain why ordinary deletion is unsafe and name counting Bloom filters."
+    ],
+    "baseline_prompt": "Controlled synthetic evaluation. Do not use tools or read repository files. In one concise complete answer, teach a beginner how a Bloom filter works from first principles. Include insertion and lookup, a small bit-array example, why false positives occur, why valid insertions have no false negatives when bits are not cleared, the memory/item/hash-count tradeoffs, and why deletion requires a variant such as a counting Bloom filter.",
+    "parsnip_prompt": "Read and use the linked Parsnip skill for this controlled synthetic evaluation. Do not use other tools or read other repository files. Start at Level 1 and progressively teach me how a Bloom filter works from first principles. The completed outcome must include insertion and lookup, a small bit-array example, why false positives occur, why valid insertions have no false negatives when bits are not cleared, the memory/item/hash-count tradeoffs, and why deletion requires a variant such as a counting Bloom filter.",
+    "controls": [
+      "next",
+      "more"
+    ]
+  },
+  {
+    "id": "document-review-orchard-beta",
+    "category": "document-review",
+    "rubric": [
+      "Identify the conditional beta approval and launch date.",
+      "Identify the SSO penetration test and Legal retention approval as launch conditions.",
+      "Extract each named owner and deadline.",
+      "Identify the vendor metadata dependency and its deadline.",
+      "Identify the unowned rollback load-test risk.",
+      "State that offline sync is deferred.",
+      "Give Devon's immediate vendor follow-up action with time and channel."
+    ],
+    "baseline_prompt": "Controlled synthetic evaluation. Do not use tools or read repository files. Review this synthetic launch memo and concisely extract decisions, owners, deadlines, unresolved risks, and the immediate next action. Memo: Orchard beta is conditionally approved for 22 July if the SSO penetration test passes and Legal approves thirty-day log retention. Offline mobile sync is removed from beta and deferred to August planning. Priya owns the final go/no-go on 20 July. Devon runs the SSO test on 16 July and posts the report on 17 July. Elena's support runbook is due 18 July. Marco's migration rehearsal is due 19 July and he owns the deferred sync item. The identity vendor must provide SAML metadata by 15 July but has not committed. The rollback load test is incomplete and has no owner or deadline. Devon must contact the vendor by 3:00 p.m. ET on 14 July and post the confirmed ETA in #orchard-launch.",
+    "parsnip_prompt": "Read and use the linked Parsnip skill for this controlled synthetic evaluation. Do not use other tools or read other repository files. Start at Level 1 and progressively review this synthetic launch memo, preserving decisions, owners, deadlines, unresolved risks, and the immediate next action. Memo: Orchard beta is conditionally approved for 22 July if the SSO penetration test passes and Legal approves thirty-day log retention. Offline mobile sync is removed from beta and deferred to August planning. Priya owns the final go/no-go on 20 July. Devon runs the SSO test on 16 July and posts the report on 17 July. Elena's support runbook is due 18 July. Marco's migration rehearsal is due 19 July and he owns the deferred sync item. The identity vendor must provide SAML metadata by 15 July but has not committed. The rollback load test is incomplete and has no owner or deadline. Devon must contact the vendor by 3:00 p.m. ET on 14 July and post the confirmed ETA in #orchard-launch.",
+    "controls": [
+      "next",
+      "next"
+    ]
+  },
+  {
+    "id": "decision-data-pipeline",
+    "category": "decision",
+    "rubric": [
+      "Compare all three options against cost, schedule, staffing, EU residency, and rollback constraints.",
+      "Recommend option B conditionally.",
+      "Explain why A and C fail material constraints.",
+      "Name lock-in, residency, and rollback risks with mitigations.",
+      "Provide an owned, time-bounded go/no-go action with measurable conditions."
+    ],
+    "baseline_prompt": "Controlled synthetic evaluation. Do not use tools or read repository files. Give one concise complete decision. Choose a data-pipeline option under these hard constraints: at most $75k first year, launch within ten weeks, no more than 0.5 FTE, EU-only PII handling, and rollback within one week. A costs $42k, takes fourteen weeks and 0.8 FTE, supports EU residency and one-week rollback. B costs $68k, takes six weeks and 0.2 FTE, offers an EU region and DPA plus export and parallel-run rollback, but requires a one-year contract. C costs $51k, takes eight weeks and 0.3 FTE, but its residency audit is pending and handover takes thirty days. Compare tradeoffs, recommend an option, identify risks and mitigations, and give an owned time-bounded next action with measurable go/no-go conditions.",
+    "parsnip_prompt": "Read and use the linked Parsnip skill for this controlled synthetic evaluation. Do not use other tools or read other repository files. Start at Level 1 and progressively help me choose a data-pipeline option under these hard constraints: at most $75k first year, launch within ten weeks, no more than 0.5 FTE, EU-only PII handling, and rollback within one week. A costs $42k, takes fourteen weeks and 0.8 FTE, supports EU residency and one-week rollback. B costs $68k, takes six weeks and 0.2 FTE, offers an EU region and DPA plus export and parallel-run rollback, but requires a one-year contract. C costs $51k, takes eight weeks and 0.3 FTE, but its residency audit is pending and handover takes thirty days. The completed outcome must compare tradeoffs, recommend an option, identify risks and mitigations, and give an owned time-bounded next action with measurable go/no-go conditions.",
+    "controls": [
+      "next",
+      "full answer"
+    ]
+  }
+]

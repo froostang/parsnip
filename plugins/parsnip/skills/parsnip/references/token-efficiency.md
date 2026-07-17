@@ -13,6 +13,16 @@ Use lazy generation with a zero-snip prefetch window. Generate the current snip 
 a compact semantic map only. Reuse stable context or provider caching when
 available, and prefer local deterministic navigation of already-generated content.
 
+On a chat surface where every reveal requires another model call, use one
+continuation as a conservative budget proxy. After that continuation, default the
+next content request to a compact synthesis unless the user explicitly chooses to
+keep pacing. Describe this as a usage guard, not as proof of neutrality.
+
+When a host supports capture-and-carve, compare its one complete authoring turn
+against the same concise one-shot baseline. Count that authoring turn in full, but
+count direct exact-span navigation as local only when the client actually bypasses
+the composer and starts no Codex turn. Do not infer savings from fixture tests.
+
 ## Bounded prefetch experiment
 
 Test a two-snip prefetch window only after measuring the lazy baseline. Prefetch

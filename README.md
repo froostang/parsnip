@@ -4,47 +4,149 @@
 
 **Parseable snips for human-paced AI.**
 
-Parsnip is an attention-aware pacing layer for AI output. It helps a person turn a
-large, unrefined idea into small, finishable steps without flooding them with the
-entire solution at once.
-
-The core rule is simple:
+Parsnip is an experimental Codex plugin for people who want useful AI responses
+in smaller pieces without losing the larger map. It starts with one finishable
+step, keeps safety and prerequisites attached, and lets the person ask for the
+next piece, more or less detail, a map, or a compact finish.
 
 > Give me the smallest useful piece now. Keep the larger picture safe. Let me
 > choose when to reveal more.
 
-Parsnip is designed for different reading speeds, attention constraints, working
-memory limits, and the very human temptation to move faster than understanding.
-The current alpha is distributed as an explicit-only Codex skill inside a
-skills-only plugin.
+Parsnip is an opt-in alpha. Its next milestone is formative user testing: whether
+the interaction improves orientation and task completion enough to justify its
+added complexity and potential AI usage.
 
-## Start here
+## Why Parsnip
 
-- [`plugins/parsnip/skills/parsnip/SKILL.md`](plugins/parsnip/skills/parsnip/SKILL.md)
-  is the canonical explicit-only alpha skill inside the distributable plugin.
-- [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) exposes
-  the plugin through a repo-local Codex marketplace.
-- [`docs/design/calibration.md`](docs/design/calibration.md) explains non-blocking
-  onboarding and optional calibration.
-- [`docs/design/token-efficiency.md`](docs/design/token-efficiency.md) defines the
-  usage budget and bounded semantic-prefetch experiment.
-- [`evals/README.md`](evals/README.md) contains the sanitized acceptance criteria
-  and evaluation template.
+AI often treats completeness as “show everything now.” That can make a correct
+answer harder to use. Parsnip separates answer quality from delivery pace:
 
-## Repository boundary
+- begin with one independently useful snip;
+- preserve the current focus, completed progress, next move, and parked branches;
+- accept natural controls such as **next**, **go deeper**, **simplify**, **map**,
+  and **finish compactly**;
+- keep warnings and verification beside the actions they govern; and
+- adapt cautiously to demonstrated communication preferences without claiming to
+  read, diagnose, or reproduce anyone's internal state.
 
-- `plugins/parsnip/` is the installable artifact and canonical runtime source.
-- `docs/` contains stable public rationale that helps contributors understand the
-  behavior without being loaded during ordinary skill use.
-- `evals/` contains reproducible synthetic criteria and templates, never raw human
-  sessions.
-- Operational planning, prompt history, private ideas, transcripts, and raw usage
-  measurements live outside this public repository.
+The optional local viewport can reveal exact portions of an already-authored
+answer without generating a new response. Requests for new reasoning still return
+to the model.
 
-## Current status
+## AI usage and cost: read this first
 
-**Plugin-alpha stage:** the explicit-only skill is packaged as a skills-only Codex
-plugin. The repo-local `.agents/skills/parsnip` path is a development symlink to
-the packaged source, so local dogfood and distribution exercise the same files.
-Continue fresh-task dogfood and usage validation before public release or implicit
-use.
+**Parsnip may increase AI usage.** Small visible responses do not necessarily mean
+fewer tokens or lower cost. Every model-backed continuation can resend context and
+start another generation.
+
+Our synthetic evaluations currently show:
+
+- skill-only progressive chat used materially more reported tokens than a concise
+  one-shot answer;
+- exact local navigation over an existing answer added no model turn;
+- a semantic **go deeper** request still required a model turn and brought the
+  combined planning path to about **2.04×** its one-shot baseline; and
+- adaptive re-entry was more focused than an ordinary follow-up and saved about
+  **1.7%** reported tokens across three repetitions, but it consistently lost
+  prompt-cache reuse seen by the ordinary path, so its billing advantage is
+  unverified.
+
+These are synthetic, model-specific measurements, not a promise about an invoice
+or every task. Parsnip does not claim to save tokens or money. The project treats
+usage as a product tradeoff to disclose and measure alongside orientation,
+completion, and user preference. See [the evaluation record](evals/README.md) and
+[token-efficiency design](docs/design/token-efficiency.md) for the full evidence.
+
+## Install
+
+Add this GitHub repository as a Codex plugin marketplace, then install Parsnip:
+
+```sh
+codex plugin marketplace add froostang/parsnip
+codex plugin add parsnip@parsnip
+```
+
+Start a new Codex task after installation so the skill and local tools are loaded.
+Parsnip never activates implicitly; invoke `$parsnip` or ask Codex to use Parsnip.
+
+Example:
+
+```text
+$parsnip Help me plan a small community workshop without giving me everything at once.
+```
+
+Useful controls:
+
+- **next** — advance one useful piece;
+- **more** / **less** — change detail by one level;
+- **map** — restore orientation;
+- **finish compactly** — consolidate the remaining answer; and
+- **neutral drift** — clear learned communication-compatibility signals for the
+  current session.
+
+## Local data and safety
+
+The optional buffer stores answer capsules in the operating system's temporary
+directory. Its directories use mode `0700`, files use `0600`, and records expire
+after six hours by default. The buffer is local, but the content it captures has
+already been generated by the configured AI service. Do not use synthetic dogfood
+as evidence that sensitive real-world data is safe to share.
+
+Parsnip is not a medical device, accessibility certification, or substitute for
+professional judgment. It must preserve critical warnings even when a user asks
+for less detail.
+
+## User testing
+
+The project is looking for evidence about usefulness, not confirmation of a
+favorite design. A good session asks whether Parsnip helped someone:
+
+- know where they were in a task;
+- identify and complete the next move;
+- recover after losing context;
+- control detail without learning special vocabulary; and
+- judge the experience worth any additional AI usage.
+
+Use the privacy-conscious protocol in [docs/user-testing.md](docs/user-testing.md).
+Do not commit raw transcripts, participant details, or private usage exports.
+
+## Project status
+
+**Alpha; explicit opt-in; user-testing phase.** Synthetic coverage verifies the
+core pacing controls, safety invariants, local exact-span navigation, semantic
+routing, immutable follow-up branches, and usage accounting. It does not establish
+real-user benefit, accessibility outcomes, token savings, or cost savings.
+
+The installable artifact lives in `plugins/parsnip/`. Public design rationale is
+in `docs/`; reproducible synthetic evaluation code and criteria are in `evals/`.
+Raw evaluation output belongs outside this repository.
+
+## Development
+
+This Git repository is the durable development source of truth.
+`plugins/parsnip/` contains the canonical installable plugin; Codex installs a
+versioned copy into its local plugin cache. Make changes here, validate them, bump
+the development cachebuster, reinstall the plugin, and test it in a new task.
+Never edit the installed cache directly.
+
+Run the local checks from the repository root:
+
+```sh
+python3 -m unittest evals.test_usage_harness
+node --test plugins/parsnip/mcp/*.test.mjs
+```
+
+The usage harness can make many billable model calls. Inspect a plan with
+`--dry-run` and select explicit paired conditions before running it. See
+[evals/README.md](evals/README.md) for commands and privacy boundaries.
+
+## Name
+
+“Parsnip” nods to *Pacific Rim*'s drift compatibility: collaborators becoming
+compatible enough to operate through a shared interface. Here it is only a design
+metaphor for reducing translation effort—not a claim to access another person's
+mind.
+
+## License
+
+Parsnip is available under the [MIT License](LICENSE).

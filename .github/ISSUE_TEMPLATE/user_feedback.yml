@@ -1,0 +1,63 @@
+name: Formative user feedback
+description: Share de-identified feedback about orientation, completion, and usage tradeoffs.
+title: "[Feedback]: "
+labels:
+  - user-feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share only aggregated or de-identified observations. Do not post raw transcripts, names, contact details, private tasks, or usage exports.
+  - type: dropdown
+    id: task_category
+    attributes:
+      label: Task category
+      options:
+        - Planning
+        - Learning
+        - Debugging
+        - Document review
+        - Decision-making
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Was the intended outcome completed?
+      options:
+        - "Yes"
+        - Partially
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Most useful part
+      description: What improved orientation or completion, if anything?
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: Main friction or failure
+    validations:
+      required: true
+  - type: dropdown
+    id: tradeoff
+    attributes:
+      label: Was the disclosed AI-usage tradeoff acceptable?
+      options:
+        - "Yes"
+        - It depends
+        - "No"
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This report is de-identified and contains no raw transcript, private task, or sensitive usage data.
+          required: true

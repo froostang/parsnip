@@ -1,21 +1,34 @@
 {
   "name": "parsnip",
-  "version": "0.1.0",
-  "description": "Human-paced, progressively disclosed AI output.",
+  "version": "0.1.0+codex.20260717162925",
+  "description": "Opt-in, human-paced AI responses with progressive disclosure.",
   "author": {
     "name": "Parsnip contributors"
   },
   "homepage": "https://github.com/froostang/parsnip",
   "repository": "https://github.com/froostang/parsnip",
-  "keywords": ["accessibility", "attention", "progressive-disclosure", "productivity"],
+  "license": "MIT",
+  "keywords": [
+    "accessibility",
+    "attention",
+    "progressive-disclosure",
+    "productivity"
+  ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Parsnip",
     "shortDescription": "Human-paced, progressively disclosed AI output",
-    "longDescription": "Turn large ideas and tasks into parseable snips while preserving orientation, safety, and user control.",
+    "longDescription": "An opt-in alpha for pacing large ideas and tasks into parseable snips while preserving orientation, safety, and user control. Model-backed continuations may increase AI usage.",
     "developerName": "Parsnip contributors",
     "category": "Productivity",
-    "capabilities": ["Interactive"],
+    "capabilities": [
+      "Interactive",
+      "Local buffering",
+      "Exact local navigation",
+      "Semantic follow-up routing",
+      "Usage transparency"
+    ],
     "defaultPrompt": [
       "Use Parsnip to help me work through this idea.",
       "Use Parsnip to explain this without overwhelming me.",
