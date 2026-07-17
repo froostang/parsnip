@@ -1,6 +1,6 @@
 {
   "name": "parsnip",
-  "version": "0.1.0+codex.20260717162925",
+  "version": "0.1.0+codex.20260717164204",
   "description": "Opt-in, human-paced AI responses with progressive disclosure.",
   "author": {
     "name": "Parsnip contributors"
@@ -33,6 +33,9 @@
       "Use Parsnip to help me work through this idea.",
       "Use Parsnip to explain this without overwhelming me.",
       "Use Parsnip to turn this project into small next steps."
-    ]
+    ],
+    "brandColor": "#F4C989",
+    "composerIcon": "./assets/parsnip-logo.png",
+    "logo": "./assets/parsnip-logo.png"
   }
 }
